@@ -1,0 +1,27 @@
+<h4><%= @city.name %></h4>
+
+
+<h3>Stops</h3>
+
+  <% if @city.stops %>
+    <ul>
+      <% @city.stops.each do |stop| %>
+        <li><a href="/cities/<%= @acity.id %>/stops/<%= stop.id %>"><%= stop.time %></a></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>There are no stops listed for this city yet.</p>
+  <% end %>
+
+<h4>Add a stop:</h4>
+
+<form action="/cities/<%= @city.id %>/stops" method="post">
+  <div class="form-group">
+    <label for="stop_time">Stop time</label>
+    <input id="stop_time" name="stop_time" class="form-control" type="text">
+  </div>
+  <button type="submit" class="btn">Add stop</button>
+</form>
+
+<p><a href="/cities/<%= city.id %>/edit">edit city</a></p>
+<a href="/cities">Return to the city list</a>
